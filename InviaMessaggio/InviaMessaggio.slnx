@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../RiceviMessaggio/RiceviMessaggio.csproj" />
+  <Project Path="InviaMessaggio.csproj" />
+</Solution>
