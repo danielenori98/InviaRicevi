@@ -19,7 +19,7 @@ await canale.QueueDeclareAsync(
     null
     );
 
-string oracleConnectionString = "User Id=SYSTEM;Password=Esercizi#123;Data Source=localhost:1521/FREEPDB1;";
+string oracleConnectionString = "User Id=SYSTEM;Password=Esercizi_123;Data Source=localhost:1521/FREEPDB1;";
 
 var consumatore = new AsyncEventingBasicConsumer(canale);
 
