@@ -57,5 +57,5 @@ await canale.BasicConsumeAsync(
     consumatore
     );
 
-Console.WriteLine("Ascolto Messaggi, Premere un Tasto per Uscire.");
+Console.WriteLine("Ascolto Messaggi, Premere Invio per Uscire.");
 Console.ReadLine();
