@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Oracle.ManagedDataAccess.Client;
 
 var connFact = new ConnectionFactory
 {
@@ -18,6 +19,8 @@ await canale.QueueDeclareAsync(
     null
     );
 
+string oracleConnectionString = "User Id=SYSTEM;Password=Esercizi#123;Data Source=localhost:1521/FREEPDB1;";
+
 var consumatore = new AsyncEventingBasicConsumer(canale);
 
 consumatore.ReceivedAsync += async (model, ea) =>
@@ -25,6 +28,25 @@ consumatore.ReceivedAsync += async (model, ea) =>
     var messaggio = Encoding.UTF8.GetString(ea.Body.ToArray());
 
     Console.WriteLine($"Messaggio:{messaggio}");
+
+    try
+    {
+        using var oracleConn = new OracleConnection(oracleConnectionString);
+        await oracleConn.OpenAsync();
+
+        string sql = "INSERT INTO REGISTRO_MESSAGGI (TESTO) VALUES (:testo)";
+
+        using var cmd = new OracleCommand(sql, oracleConn);
+        cmd.Parameters.Add(new OracleParameter("testo", messaggio));
+
+        await cmd.ExecuteNonQueryAsync();
+
+        Console.WriteLine("Messaggio salvato su DB");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Errore DB: {ex.Message}");
+    }
 
     await Task.CompletedTask;
 };
