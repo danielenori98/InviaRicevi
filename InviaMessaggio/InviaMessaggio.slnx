@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/ScriptSQL/">
-    <File Path="Struttura.sql" />
+    <File Path="strutturaDB.sql" />
   </Folder>
   <Project Path="../RiceviMessaggio/RiceviMessaggio.csproj" />
   <Project Path="InviaMessaggio.csproj" />
