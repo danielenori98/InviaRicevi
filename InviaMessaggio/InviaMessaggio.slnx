@@ -1,7 +1,5 @@
 <Solution>
-  <Folder Name="/ScriptSQL/">
-    <File Path="StrutturaDB.sql" />
-  </Folder>
+  <Folder Name="/ScriptSQL/" />
   <Project Path="../RiceviMessaggio/RiceviMessaggio.csproj" />
   <Project Path="InviaMessaggio.csproj" />
 </Solution>

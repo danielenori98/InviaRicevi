@@ -11,7 +11,7 @@ using var canale = await conn.CreateChannelAsync();
 string coda = "InviaRicevi";
 await canale.QueueDeclareAsync(
     coda,
-    false,
+    true,
     false,
     false,
     null
